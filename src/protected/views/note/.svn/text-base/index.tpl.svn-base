@@ -1,0 +1,16 @@
+{{extends file="application.views.layouts.main"}}
+{{block name=leftCol}}
+{{foreach from=$notes item=$note}}
+<div class='noteItem'>
+    <div class='noteAuthor'>
+		        
+    </div>
+    <div class='noteContent'>
+        <h3 class='noteTitle'></div>
+    	<p>{{$note['content']}}</p>
+    </div>
+    <div class='clear'></div>
+</div>
+{{/foreach}}
+<div class='clear'></div>
+{{/block}}

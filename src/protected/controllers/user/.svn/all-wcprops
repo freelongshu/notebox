@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/notebox/!svn/ver/690/1/src/protected/controllers/user
+END
+SendMsgAction.php.bak
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/notebox/!svn/ver/2/1/src/protected/controllers/user/SendMsgAction.php.bak
+END
+SignUpAction.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/notebox/!svn/ver/356/1/src/protected/controllers/user/SignUpAction.php
+END
+LoginAction.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/notebox/!svn/ver/500/1/src/protected/controllers/user/LoginAction.php
+END
+SendVerifyCodeAction.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/notebox/!svn/ver/2/1/src/protected/controllers/user/SendVerifyCodeAction.php
+END
+LogoutAction.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/notebox/!svn/ver/383/1/src/protected/controllers/user/LogoutAction.php
+END
+VerifyEmailAction.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/notebox/!svn/ver/372/1/src/protected/controllers/user/VerifyEmailAction.php
+END
+BoxesAction.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/notebox/!svn/ver/690/1/src/protected/controllers/user/BoxesAction.php
+END
+SendVerifyEmailAction.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/notebox/!svn/ver/346/1/src/protected/controllers/user/SendVerifyEmailAction.php
+END

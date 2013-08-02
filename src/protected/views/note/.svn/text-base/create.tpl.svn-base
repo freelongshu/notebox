@@ -1,0 +1,84 @@
+{{extends file="application.views.layouts.main"}}
+{{block name=leftCol}}
+<div class='noteForm'>
+    {{CHtml::beginForm()}}
+    <div class='line'>
+        <div class='inputLabel'>新增笔记到：</div>
+        <div class='input'>
+            {{CHtml::activeTextField($form,'boxId')}}
+            <div class='boxIdSelect' id='changeBox'>换个盒子</div>
+            <div class='clear'></div>
+        </div>
+        <div class='inputError'>{{CHtml::error($form,'boxId')}}</div>
+        <div class='clear'></div>
+    </div>
+    <div class='line'>
+        <div class='inputLabel'>标题：</div>
+        <div class='input'>{{CHtml::activeTextField($form,'title')}}</div>
+        <div class='inputError'>{{CHtml::error($form,'title')}}</div>
+        <div class='clear'></div>
+    </div>
+    <div class='line'>
+        <div class='inputLabel'>内容：</div>
+        <div class='contentInput'>{{CHtml::activeTextArea($form,'content')}}</div>
+        <div class='inputError'>{{CHtml::error($form,'content')}}</div>
+        <div class='clear'></div>
+    </div>
+    <div class='line'>
+        <div class='isPublicLabel'>
+            <input class='checkBox' id="NoteForm_isPublic" type="checkbox" value="1" name="NoteForm[isPublic]" checked/>
+            <span>其他人可见</span>
+        </div>
+        <input type='submit' class='button' value='发布'/>
+        <div class='clear'></div>
+    </div>
+    {{CHtml::endForm()}}
+</div>
+<div class='boxIdHide'  id='boxIdHide'>
+    <img class='triangleImg' src="{{$static}}/img/triangleImg.png"/>
+	<div class='boxOption' id='addBox'>盒子+1</div>    
+    {{CHtml::beginForm()}}
+    <div class='smallBoxForm' id='smallBoxForm'>
+    	{{CHtml::activeTextField($boxForm,'name')}}
+        <input type='submit' value='确定' class='createButton'/>
+        <div class='clear'></div>
+    </div>
+    {{CHtml::endForm()}}
+    {{foreach from=$myBoxes item=myBox}}
+    <div class='boxOption' id="mybox{{$myBox['id']}}">
+    	{{$myBox['name']}}
+    </div>
+    {{/foreach}}
+</div>
+<script>
+    $('#changeBox').hover(function(){
+    	$('#boxIdHide').show();
+    });
+    $('#addBox').on('click',function(){
+    	$('#smallBoxForm').toggle();
+        $('#smallBoxForm #BoxForm_name').focus();
+    });
+    $('#BoxForm').on('submit',function(){      
+        var boxName=$('#BoxForm_name').val();
+        if(boxName==''){
+        	return false;
+        }
+        $('#BoxForm').replaceWith("<div class='boxOption'><img class='loadingImg' src='{{$static}}/img/loading.gif'/></div>");
+        $.ajax({
+            url:'/box/tempAdd',
+            type:'post',
+            dataType:'json',
+            data:{'boxName':boxName},
+            success:function(result){
+                if(result.status=='success'&&result.data.addStatus=='success'){                   
+                    $('#boxIdHide').append("<div class='boxOption'>"+boxName+"</div>");
+                }else{
+                    $('#boxIdHide').append("<div class='boxOption errorTxt'>出错了，请稍后重试</div>");
+                }
+            	
+            }
+        });
+        return false;
+    });
+</script>
+{{/block}}

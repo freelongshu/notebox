@@ -1,0 +1,111 @@
+<?php
+
+class Application extends CWebApplication
+{
+    public $log;
+
+    protected function init()
+    {
+        parent::init();
+
+        Yii::setLogger(new Logger());
+
+        $this->onBeginRequest = function($event) {
+            $app = $event->sender;
+            $request = $app->request;
+            $logger = Yii::getLogger();
+            $logger->setContext('method', $request->requestType);
+            $logger->setContext('url', $request->hostInfo.$request->url);
+            $logger->setContext('referrer', $request->urlReferrer);
+            $logger->setContext('uid', $app->user->id);
+        };
+
+        $this->onEndRequest = function($event) {
+        	foreach (Error::$errors as $error) {
+                $category='exception.' . get_class($error);
+                if ($error instanceof CHttpException)
+                    $category.='.'.$error->statusCode;
+                $message = $error->getMessage();
+                Yii::log($message, CLogger::LEVEL_WARNING, $category);
+            }
+            Error::$errors = array();        
+        };
+    }
+
+    protected function logWarnings()
+    {
+        foreach (Error::$errors as $error) {
+            $category='exception.' . get_class($error);
+            if ($error instanceof CHttpException)
+                $category.='.'.$error->statusCode;
+            $message = $error->getMessage();
+            Yii::log($message, CLogger::LEVEL_WARNING, $category);
+        }
+        Error::$errors = array();
+    }
+
+	public function handleException($exception)
+	{
+        // disable error capturing to avoid recursive errors
+        restore_error_handler();
+        restore_exception_handler();
+
+        if (($key = array_search($exception, Error::$errors)) !== false) {
+            unset(Error::$errors[$key]);
+        }
+        $this->logWarnings();
+
+        $category='exception.'.get_class($exception);
+        if($exception instanceof CHttpException)
+            $category.='.'.$exception->statusCode;
+        // php <5.2 doesn't support string conversion auto-magically
+        $message=$exception->getMessage();
+        Yii::log($message,CLogger::LEVEL_ERROR,$category);
+
+        try
+        {
+            $event=new CExceptionEvent($this,$exception);
+            $this->onException($event);
+            if(!$event->handled)
+            {
+                // try an error handler
+                if(($handler=$this->getErrorHandler())!==null)
+                    $handler->handle($event);
+                else
+                    $this->displayException($exception);
+            }
+        }
+        catch(Exception $e)
+        {
+            $this->displayException($e);
+        }
+
+        try
+        {
+            $this->end(1);
+        }
+        catch(Exception $e)
+        {
+            // use the most primitive way to log error
+            $msg = get_class($e).': '.$e->getMessage().' ('.$e->getFile().':'.$e->getLine().")\n";
+            $msg .= $e->getTraceAsString()."\n";
+            $msg .= "Previous exception:\n";
+            $msg .= get_class($exception).': '.$exception->getMessage().' ('.$exception->getFile().':'.$exception->getLine().")\n";
+            $msg .= $exception->getTraceAsString()."\n";
+            $msg .= '$_SERVER='.var_export($_SERVER,true);
+            error_log($msg);
+            exit(1);
+        }
+	}
+
+}
+
+
+function array_fetch($arr, $key)
+{
+    $result = array();
+    foreach ($arr as $k => $item) {
+        $result[$k] = $item[$key];
+    }
+    return $result;
+}

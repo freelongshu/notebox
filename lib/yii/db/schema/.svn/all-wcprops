@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/notebox/!svn/ver/2/1/lib/yii/db/schema
+END
+CDbSchema.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/notebox/!svn/ver/2/1/lib/yii/db/schema/CDbSchema.php
+END
+CDbCriteria.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/notebox/!svn/ver/2/1/lib/yii/db/schema/CDbCriteria.php
+END
+CDbCommandBuilder.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/notebox/!svn/ver/2/1/lib/yii/db/schema/CDbCommandBuilder.php
+END
+CDbTableSchema.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/notebox/!svn/ver/2/1/lib/yii/db/schema/CDbTableSchema.php
+END
+CDbColumnSchema.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/notebox/!svn/ver/2/1/lib/yii/db/schema/CDbColumnSchema.php
+END
+CDbExpression.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/notebox/!svn/ver/2/1/lib/yii/db/schema/CDbExpression.php
+END

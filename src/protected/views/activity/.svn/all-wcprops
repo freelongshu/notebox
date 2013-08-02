@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/notebox/!svn/ver/2/1/src/protected/views/activity
+END
+update.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/notebox/!svn/ver/2/1/src/protected/views/activity/update.tpl
+END
+create.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/notebox/!svn/ver/2/1/src/protected/views/activity/create.tpl
+END
+manage.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/notebox/!svn/ver/2/1/src/protected/views/activity/manage.tpl
+END
+view.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/notebox/!svn/ver/2/1/src/protected/views/activity/view.tpl
+END
+applyers.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/notebox/!svn/ver/2/1/src/protected/views/activity/applyers.tpl
+END

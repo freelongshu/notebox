@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/notebox/!svn/ver/2/1/src/protected/errors
+END
+IndustryNotExistError.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/notebox/!svn/ver/2/1/src/protected/errors/IndustryNotExistError.php
+END
+UpdatePointsError.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/notebox/!svn/ver/2/1/src/protected/errors/UpdatePointsError.php
+END
+WantedNotExistError.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/notebox/!svn/ver/2/1/src/protected/errors/WantedNotExistError.php
+END
+OrgLoginRequiredError.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/notebox/!svn/ver/2/1/src/protected/errors/OrgLoginRequiredError.php
+END
+AddToRedisError.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/notebox/!svn/ver/2/1/src/protected/errors/AddToRedisError.php
+END
+MaliciousUserError.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/notebox/!svn/ver/2/1/src/protected/errors/MaliciousUserError.php
+END
+DirtyDataError.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/notebox/!svn/ver/2/1/src/protected/errors/DirtyDataError.php
+END
+ProfessionNotExistError.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/notebox/!svn/ver/2/1/src/protected/errors/ProfessionNotExistError.php
+END
+UserNotInitializedError.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/notebox/!svn/ver/2/1/src/protected/errors/UserNotInitializedError.php
+END
+CustomerLoginRequiredError.php.bak
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/notebox/!svn/ver/2/1/src/protected/errors/CustomerLoginRequiredError.php.bak
+END
+EmailVerificationNotExistError.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/notebox/!svn/ver/2/1/src/protected/errors/EmailVerificationNotExistError.php
+END
+CustomerLoginRequiredError.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/notebox/!svn/ver/2/1/src/protected/errors/CustomerLoginRequiredError.php
+END
+ParamError.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/notebox/!svn/ver/2/1/src/protected/errors/ParamError.php
+END
+OAuthAuthorizationError.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/notebox/!svn/ver/2/1/src/protected/errors/OAuthAuthorizationError.php
+END
+InsertPointsTblError.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/notebox/!svn/ver/2/1/src/protected/errors/InsertPointsTblError.php
+END
+SocialUserAlreadyBoundError.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/notebox/!svn/ver/2/1/src/protected/errors/SocialUserAlreadyBoundError.php
+END
+CityNotExistError.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/notebox/!svn/ver/2/1/src/protected/errors/CityNotExistError.php
+END
+WeiboOAuthError.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/notebox/!svn/ver/2/1/src/protected/errors/WeiboOAuthError.php
+END
+InvalidOperationError.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/notebox/!svn/ver/2/1/src/protected/errors/InvalidOperationError.php
+END
+JobNotExistError.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/notebox/!svn/ver/2/1/src/protected/errors/JobNotExistError.php
+END
+RemoveFromRedisError.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/notebox/!svn/ver/2/1/src/protected/errors/RemoveFromRedisError.php
+END
+LoginRequiredError.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/notebox/!svn/ver/2/1/src/protected/errors/LoginRequiredError.php
+END
+InvalidParametersError.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/notebox/!svn/ver/2/1/src/protected/errors/InvalidParametersError.php
+END
+AccessDeniedError.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/notebox/!svn/ver/2/1/src/protected/errors/AccessDeniedError.php
+END
+PointsZeroError.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/notebox/!svn/ver/2/1/src/protected/errors/PointsZeroError.php
+END
+UserNotExistError.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/notebox/!svn/ver/2/1/src/protected/errors/UserNotExistError.php
+END
+OrgLoginRequiredError.php.bak
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/notebox/!svn/ver/2/1/src/protected/errors/OrgLoginRequiredError.php.bak
+END

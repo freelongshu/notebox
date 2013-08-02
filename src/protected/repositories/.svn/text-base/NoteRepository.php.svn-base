@@ -1,0 +1,46 @@
+<?php
+
+class NoteRepository extends Repository{
+    
+    private $_table='note';
+    
+    public function create($form){
+        $this->dbCommand()
+            ->insert($this->_tabel,array(
+                'title'=>$form['title'],
+                'content'=>$form['content'],
+				'createTime'=>time(),
+				'updateTime'=>time(),
+                'authorId'=>$form['authorId'],
+                'isPublic'=>$form['isPublic'],
+            ));
+        $id = $this->getDb()->getLastInsertID();
+        return $id;
+    }
+
+    public function get($id){
+        $model = $this->dbCommand()
+            ->from($this->_tabel)
+            ->where('id=:id', array(':id' => intval($id)))
+            ->select('*')
+            ->queryRow();
+        return $model;
+    }
+	
+    public function update($id,$params){
+        $model=$this->get($id);
+		$num=$this->dbCommand()->update($this->_tabel,$params,'id=:id',array(':id'=>intval($id)));
+		if($num!=1) throw new UpdateNoteError(array('id'=>$id));
+		return true;
+	}
+    
+    public function recent(){
+    	$models=$this->dbCommand()
+            ->select('*')
+            ->from($this->_table)
+            ->where('isDelete=0 order by createTime desc')
+            ->queryAll();
+  		return $models;      
+    }
+}
+?>

@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/notebox/!svn/ver/2/1/lib/yii/web/auth
+END
+CUserIdentity.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/notebox/!svn/ver/2/1/lib/yii/web/auth/CUserIdentity.php
+END
+schema-pgsql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/notebox/!svn/ver/2/1/lib/yii/web/auth/schema-pgsql.sql
+END
+CAuthAssignment.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/notebox/!svn/ver/2/1/lib/yii/web/auth/CAuthAssignment.php
+END
+CAuthManager.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/notebox/!svn/ver/2/1/lib/yii/web/auth/CAuthManager.php
+END
+schema-mssql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/notebox/!svn/ver/2/1/lib/yii/web/auth/schema-mssql.sql
+END
+CDbAuthManager.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/notebox/!svn/ver/2/1/lib/yii/web/auth/CDbAuthManager.php
+END
+schema-sqlite.sql
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/notebox/!svn/ver/2/1/lib/yii/web/auth/schema-sqlite.sql
+END
+CPhpAuthManager.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/notebox/!svn/ver/2/1/lib/yii/web/auth/CPhpAuthManager.php
+END
+schema-mysql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/notebox/!svn/ver/2/1/lib/yii/web/auth/schema-mysql.sql
+END
+CWebUser.php.bak
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/notebox/!svn/ver/2/1/lib/yii/web/auth/CWebUser.php.bak
+END
+CAccessControlFilter.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/notebox/!svn/ver/2/1/lib/yii/web/auth/CAccessControlFilter.php
+END
+CWebUser.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/notebox/!svn/ver/2/1/lib/yii/web/auth/CWebUser.php
+END
+schema-oci.sql
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/notebox/!svn/ver/2/1/lib/yii/web/auth/schema-oci.sql
+END
+CAuthItem.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/notebox/!svn/ver/2/1/lib/yii/web/auth/CAuthItem.php
+END
+CBaseUserIdentity.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/notebox/!svn/ver/2/1/lib/yii/web/auth/CBaseUserIdentity.php
+END

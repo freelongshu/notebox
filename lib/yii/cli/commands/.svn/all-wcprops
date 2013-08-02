@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/notebox/!svn/ver/2/1/lib/yii/cli/commands
+END
+WebAppCommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/WebAppCommand.php
+END
+MessageCommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/MessageCommand.php
+END
+ShellCommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/ShellCommand.php
+END
+MigrateCommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/MigrateCommand.php
+END

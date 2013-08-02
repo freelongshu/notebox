@@ -1,0 +1,19 @@
+<?php
+class VerifyEmailAction extends PageAction{
+    CONST LOGIN_DURATION=2592000;
+	public function runPage(){       
+    	$emailVerifyCode=$_GET['emailVerifyCode'];
+    	$user=$this->repo('user')->getByEmailVerifyCode($emailVerifyCode);
+        $this->repo('user')->updateIsEmailVerify($user['id']);
+        $identity = new UserIdentity(
+        	$user['id'],
+            $user['nickname'],
+            true);
+        Yii::app()->user->login($identity,self::LOGIN_DURATION);
+        Yii::getLogger()->info('application.user.login', array(
+        	'user_id' => Yii::app()->user->id,
+            'user_name' => Yii::app()->user->name,
+        ));
+	}
+}
+?>

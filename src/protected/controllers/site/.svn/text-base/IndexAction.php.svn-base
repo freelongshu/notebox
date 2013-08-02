@@ -1,0 +1,12 @@
+<?php
+
+class IndexAction extends PageAction
+{
+	
+	public function runPage(){
+		return array(
+			'title'=>'笔记盒',
+			'sub_title'=>'笔记盒首页',
+		);
+	}
+}

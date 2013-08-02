@@ -1,0 +1,16 @@
+<?php
+
+class IndexAction extends PageAction
+{	
+	public function runPage(){
+        $this->requireLogin();
+        $user=$this->repo('user')->get(Yii::app()->user->id);
+        $notes=$this->repo('note')->recent();
+        return array(
+            'title'=>'笔记盒',
+            'subtitle'=>'所有笔记',
+        	'user'=>$user,
+            'notes'=>$notes,
+        );
+	}
+}

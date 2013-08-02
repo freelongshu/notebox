@@ -1,0 +1,9 @@
+name: xlpipashu
+version: 1
+# URL rewrite
+handle:
+- rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "/src/index.php/$1"
+
+- expire: if(path ~ ".js$") time 8640000
+- expire: if(path ~ ".css$") time 8640000
+- compress: if(out_header["Content-Type"] == "text/html") compress

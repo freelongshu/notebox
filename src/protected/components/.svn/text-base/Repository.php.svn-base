@@ -1,0 +1,19 @@
+<?php
+
+class Repository extends CComponent
+{
+    public function getDb()
+    {
+        return Yii::app()->db;
+    }
+
+    public function dbCommand($sql='')
+    {
+        return Yii::app()->db->createCommand($sql);
+    }
+
+    protected function dbQuery($query)
+    {
+        return Yii::app()->db->createCommand($query);
+    }
+}

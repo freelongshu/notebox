@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/notebox/!svn/ver/552/1/src/protected/views/layouts
+END
+main.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/notebox/!svn/ver/517/1/src/protected/views/layouts/main.tpl
+END
+main_without_top_nav.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/notebox/!svn/ver/552/1/src/protected/views/layouts/main_without_top_nav.tpl
+END

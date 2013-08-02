@@ -1,0 +1,447 @@
+Source for file saemail.class.php
+Documentation is available at saemail.class.php
+
+1.<?php
+2./**
+3. * SAE邮件服务
+4. *
+5. * @package sae
+6. * @version $Id$
+7. * @author lijun
+8. */
+9. 
+10. 
+11. 
+12./**
+13. * SAE邮件class , 目前只支持SMTP
+14. *
+15. * 最大可发送1MB大小的邮件（含附件）
+16. *
+17. * <code>
+18. * <?php
+19. * $mail = new SaeMail();
+20. * $mail->setAttach( array( 'my_photo' => '照片的二进制数据' ) );
+21. * $ret = $mail->quickSend( 'to@sina.cn' , '邮件标题' , '邮件内容' , 'smtpaccount@gmail.com' , 'password' );
+22. *
+23. * //发送失败时输出错误码和错误信息
+24. * if ($ret === false)
+25. *         var_dump($mail->errno(), $mail->errmsg());
+26. * 
+27. * $mail->clean(); // 重用此对象
+28. * $ret = $mail->quickSend( 'to@sina.cn' , '邮件标题' , '邮件内容' , 'smtpaccount@unknown.com' , 'password' , 'smtp.unknown.com' , 25 ); // 指定smtp和端口
+29. *
+30. * //发送失败时输出错误码和错误信息
+31. * if ($ret === false)
+32. *         var_dump($mail->errno(), $mail->errmsg());
+33. * ?>
+34. * </code>
+35. *
+36. * 错误码参考：
+37. *  - errno: 0         成功
+38. *  - errno: 3         参数错误
+39. *  - errno: 500     服务内部错误
+40. *  - errno: 999     未知错误
+41. *  - errno: 403     权限不足或超出配额
+42. * 
+43. * @package sae
+44. * @author lijun
+45. *
+46. */
+47.class SaeMail extends SaeObject
+48.{
+49.    private $_accesskey = "";    
+50.    private $_secretkey = "";
+51.    private $_errno=SAE_Success;
+52.    private $_errmsg="OK";
+53.    private $_count = 0;
+54.    private $_attachSize = 0;
+55.    private $_post = array();
+56.    private $_allowedAttachType = array("bmp","css","csv","gif","htm","html","jpeg","jpg","jpe","pdf","png","rss","text","txt","asc","diff","pot","tiff","tif","wbmp","ics","vcf");
+57.    /**
+58.     * @ignore
+59.     */
+60.    const DISPOSITION_ATTACH = 'A';
+61.    /**
+62.     * @ignore
+63.     */
+64.    const DISPOSITION_INLINE = 'I';
+65.    private $_disposition = array(  "bmp"=>self::DISPOSITION_INLINE, "css"=>self::DISPOSITION_ATTACH,
+66.        "csv"=>self::DISPOSITION_ATTACH, "gif"=>self::DISPOSITION_INLINE,
+67.        "htm"=>self::DISPOSITION_INLINE,"html"=>self::DISPOSITION_INLINE,
+68.        "jpeg"=>self::DISPOSITION_INLINE,"jpg"=>self::DISPOSITION_INLINE,
+69.        "jpe"=>self::DISPOSITION_INLINE, "pdf"=>self::DISPOSITION_ATTACH,
+70.        "png"=>self::DISPOSITION_INLINE, "rss"=>self::DISPOSITION_INLINE,
+71.        "text"=>self::DISPOSITION_ATTACH,"txt"=>self::DISPOSITION_ATTACH,
+72.        "asc"=>self::DISPOSITION_ATTACH,"diff"=>self::DISPOSITION_ATTACH,
+73.        "pot"=>self::DISPOSITION_ATTACH,"tiff"=>self::DISPOSITION_ATTACH,
+74.        "tif"=>self::DISPOSITION_ATTACH,"wbmp"=>self::DISPOSITION_INLINE,
+75.        "ics"=>self::DISPOSITION_INLINE,"vcf"=>self::DISPOSITION_INLINE,);
+76.    private $msp = array("sina.com"    => array("smtp.sina.com",25,0),
+77.        "sina.cn"        => array("smtp.sina.cn",25,0),
+78.        "163.com"        => array("smtp.163.com",25,0),
+79.        "263.com"        => array("smtp.263.com",25,0),
+80.        "gmail.com"    => array("smtp.gmail.com",587,1),
+81.        "sohu.com"    => array("smtp.sohu.com",25,0),
+82.        "qq.com"        => array("smtp.qq.com",25,0),
+83.        "vip.qq.com"    => array("smtp.qq.com",25,0),
+84.        "126.com"        => array("smtp.126.com",25,0),
+85.    );
+86. 
+87.    /**
+88.     * @ignore
+89.     */
+90.    const baseurl = "http://mail.sae.sina.com.cn/index.php";
+91.    /**
+92.     * @ignore
+93.     */
+94.    const mail_limitsize = 1048576;
+95.    /**
+96.     * @ignore
+97.     */
+98.    const subject_limitsize = 256;
+99. 
+100.    /**
+101.     * 构造对象，此处options选项的设置和函数setOpt相同
+102.     *
+103.     * @param array $options 邮件发送参数，详细参数请参考SaeMail::setOpt($options)
+104.     */
+105.    function __construct($options = array()) {
+106.        $this->_accesskey = SAE_ACCESSKEY;
+107.        $this->_secretkey = SAE_SECRETKEY;
+108. 
+109.        $this->setOpt($options);
+110.    }
+111. 
+112.    /**
+113.     * 设置发送参数,此处设置的参数只有使用send()方法发送才有效;quickSend()时将忽略此设置.
+114.     * 
+115.     *
+116.     * @param array $options 支持的Key如下:
+117.     *  <pre>
+118.     *     from              string (only one)
+119.     *     -----------------------------------------
+120.     *     to                string (多个用,分开)
+121.     *     -----------------------------------------
+122.     *     cc                string (多个用,分开)
+123.     *     -----------------------------------------
+124.     *     smtp_host         string
+125.     *     -----------------------------------------
+126.     *     smtp_port         port,default 25
+127.     *     -----------------------------------------
+128.     *     smtp_username     string
+129.     *     -----------------------------------------
+130.     *     smtp_password     string
+131.     *     -----------------------------------------
+132.     *     subject           string,最大长度256字节
+133.     *     -----------------------------------------
+134.     *     content           text
+135.     *     -----------------------------------------
+136.     *     content_type      "TEXT"|"HTML",default TEXT
+137.     *     -----------------------------------------
+138.     *     charset           default utf8
+139.     *     -----------------------------------------
+140.     *     tls               default false
+141.     *     -----------------------------------------
+142.     *     compress          string 设置此参数后，SaeMail会将所有附件压缩成一个zip文件，此参数用来指定压缩后的文件名。
+143.     *     -----------------------------------------
+144.     *     callback_url      string SMTP发送失败时的回调地址，回调方式为post，postdata格式：timestamp=时间戳&from=from地址&to=to地址（如有多个to，则以,分割）
+145.     *     -----------------------------------------
+146.     *  </pre>
+147.     *
+148.     * @return bool 
+149.     * @author Lijun
+150.     */
+151.    public function setOpt( $options ) {
+152.        if (isset($options['subject']) && strlen($options['subject']) > self::subject_limitsize) {
+153.            $this->_errno = SAE_ErrParameter;
+154.            $this->_errmsg = "subject cannot larger than ".self::subject_limitsize." bytes";
+155.            return false;
+156.        }
+157.        if(isset($options['content']))
+158.            $this->_count = $this->_attachSize + strlen($options['content']);
+159.        if($this->_count > self::mail_limitsize) {
+160.            $this->_errno = SAE_ErrParameter;
+161.            $this->_errmsg = "mail size cannot larger than ".self::subject_limitsize." bytes";
+162.            return false;
+163.        }
+164. 
+165.        $this->_post = array_merge($this->_post, $options);
+166. 
+167.        return true;
+168.    }
+169. 
+170.    /**
+171.     * 用于重用实例化对象时，将上一次的相关数据清零
+172.     *
+173.     * @return bool 
+174.     * @author Lijun
+175.     */
+176.    public function clean() {
+177.        $this->_post = array();
+178.        $this->_count = 0;
+179.        $this->_attachSize = 0;
+180.        return true;
+181.    }
+182. 
+183.    /**
+184.     * 快速发送邮件
+185.     *
+186.     * 由于采用邮件队列发送,本函数返回成功时,只意味着邮件成功送到发送队列,并不等效于邮件已经成功发送.
+187.     * 邮件编码默认为UTF-8,如需发送其他编码的邮件,请使用setOpt()方法设置charset,否则收到的邮件标题和内容都将是空的.
+188.     *
+189.     * @param string $to 要发送到的邮件地址,多个邮件地址之间用英文逗号","隔开
+190.     * @param string $subject 邮件标题
+191.     * @param string $msgbody 邮件内容
+192.     * @param string $smtp_user smtp用户名，必须为邮箱地址。注：和setOpt()中的smtp_user不同。
+193.     * @param string $smtp_pass smtp用户密码
+194.     * @param string $smtp_host smtp服务host,使用sina,gmail,163,265,netease,qq,sohu,yahoo的smtp时可不填
+195.     * @param string $smtp_port smtp服务端口,使用sina,gmail,163,265,netease,qq,sohu,yahoo的smtp时可不填
+196.     * @param string $smtp_tls smtp服务是否开启tls(如gmail),使用sina,gmail,163,265,netease,qq,sohu,yahoo的smtp时可不填
+197.     * @return bool 
+198.     * @author Lijun
+199.     */
+200.    function quickSend($to, $subject, $msgbody, $smtp_user, $smtp_pass, $smtp_host='', $smtp_port=25, $smtp_tls=false)
+201.    {
+202.        $to = trim($to);
+203.        $subject = trim($subject);
+204.        $msgbody = trim($msgbody);
+205.        $smtp_user = trim($smtp_user);
+206.        $smtp_host = trim($smtp_host);
+207.        $smtp_port = intval($smtp_port);
+208. 
+209.        $this->_count = strlen($msgbody) + $this->_attachSize;
+210.        if(strlen($subject) > self::subject_limitsize) {
+211.            $_errno = SAE_ErrParameter;
+212.            $this->_errmsg = "subject cannot larger than ".self::subject_limitsize." bytes";
+213.            return false;
+214.        }
+215.        if($this->_count > self::mail_limitsize) {
+216.            $this->_errno = SAE_ErrParameter;
+217.            $this->_errmsg = "mail size cannot larger than ".self::subject_limitsize." bytes";
+218.            return false;
+219.        }
+220. 
+221.        //if(preg_match('/([a-zA-Z0-9_-]+)@([a-zA-Z0-9-]+\.[a-zA-Z0-9-]+\.?[a-zA-Z0-9-]*)/', $smtp_user, $match)) {
+222.        if (filter_var($smtp_user, FILTER_VALIDATE_EMAIL)) {
+223.            preg_match('/([^@]+)@(.*)/', $smtp_user, $match);
+224.            $user = $match[1]; $host = $match[2];
+225.            if(empty($smtp_host)) {
+226.                //print_r($match);
+227.                if(isset($this->msp[$host])) { $smtp_host = $this->msp[$host][0]; }
+228.                else {
+229.                    $this->_errno = SAE_ErrParameter;
+230.                    $this->_errmsg = "you can set smtp_host explicitly or choose msp from sina,gmail,163,265,netease,qq,sohu,yahoo";
+231.                    return false;
+232.                }
+233.            }
+234.            if($smtp_port == 25 and isset($this->msp[$host])) {
+235.                $smtp_port = $this->msp[$host][1];
+236.            }
+237.            if(!$smtp_tls and isset($this->msp[$host])) {
+238.                $smtp_tls = $this->msp[$host][2];
+239.            }
+240.            $smtp_tls = ($smtp_tls == true);
+241.            $username = $user;
+242.        } else {
+243.            $this->_errno = SAE_ErrParameter;
+244.            $this->_errmsg = "invalid email address";
+245.            return false;
+246.        }
+247.        $this->_post = array_merge($this->_post, array("from"=>$smtp_user, "smtp_username"=>$username, "smtp_password"=>$smtp_pass, "smtp_host"=>$smtp_host, "smtp_port"=>$smtp_port, 'to'=>$to,'subject'=>$subject,'content'=>$msgbody, 'tls'=>$smtp_tls));
+248. 
+249.        return $this->send();
+250.    }
+251. 
+252.    /**
+253.     * 取得错误码
+254.     *
+255.     * @return int 
+256.     * @author Lijun
+257.     */
+258.    public function errno() {
+259.        return $this->_errno;
+260.    }
+261. 
+262.    /**
+263.     * 取得错误信息
+264.     *
+265.     * @return string 
+266.     * @author Lijun
+267.     */
+268.    public function errmsg() {
+269.        return $this->_errmsg;
+270.    }
+271. 
+272.    /**
+273.     * 设置key
+274.     *
+275.     * 只有使用其他应用的key时才需要调用
+276.     *
+277.     * @param string $accesskey 
+278.     * @param string $secretkey 
+279.     * @return bool 
+280.     * @author Lijun
+281.     * @ignore
+282.     */
+283.    public function setAuth( $accesskey, $secretkey) {
+284.        $accesskey = trim($accesskey);
+285.        $secretkey = trim($secretkey);
+286.        $this->_accesskey = $accesskey;
+287.        $this->_secretkey = $secretkey;
+288.        return true;
+289.    }
+290. 
+291.    /**
+292.     * 添加附件
+293.     *
+294.     * 附件和邮件正文的总大小不可超过1MB。
+295.     *
+296.     * @param array $attach , key为文件名称,附件类型由文件名后缀决定,value为文件内容;文件内容支持二进制<br>
+297.     *  支持的文件后缀:bmp,css,csv,gif,htm,html,jpeg,jpg,jpe,pdf,png,rss,text,txt,asc,diff,pot,tiff,tif,wbmp,ics,vcf
+298.     * @return bool 
+299.     * @author Lijun
+300.     */
+301.    public function setAttach($attach) {
+302.        if(!is_array($attach)) {
+303.            $this->_errmsg = "attach parameter must be an array!";
+304.            $this->_errno = SAE_ErrParameter;
+305.            return false;
+306.        }
+307.        $this->_attachSize = 0;
+308.        foreach($attach as $fn=>$blob) {
+309.            $suffix = end(explode(".", $fn));
+310.            if(!in_array($suffix, $this->_allowedAttachType)) {
+311.                $this->_errno = SAE_ErrParameter;
+312.                $this->_errmsg = "Invalid attachment type";
+313.                return false;
+314.            }
+315.            $this->_attachSize += strlen($blob);
+316.            $this->_count = $this->_attachSize + strlen($this->_post['content']);
+317.            if($this->_count > self::mail_limitsize) {
+318.                $this->_errno = SAE_ErrForbidden;
+319.                $this->_errmsg = "mail size cannot larger than ".self::mail_limitsize." bytes";
+320.                return false;
+321.            }
+322.            $this->_post = array_merge($this->_post, array("attach:$fn:B:".$this->_disposition[$suffix] => base64_encode($blob)));
+323.            //print_r(strlen(base64_encode($blob)));
+324.        }
+325.        return true;
+326.    }
+327. 
+328.    /**
+329.     * 发送邮件
+330.     *
+331.     * @return bool 
+332.     * @author Lijun
+333.     */
+334.    public function send() {
+335.        $missed_keys = array();
+336.        foreach ( array('from', 'to', 'smtp_host', 'smtp_username', 'smtp_password', 'subject') as $key ) {
+337.            if ( empty($this->_post[$key]) ) {
+338.                $missed_keys[] = $key;
+339.            }
+340.        }
+341.        if ( !empty($missed_keys) ) {
+342.                $this->_errno = SAE_ErrParameter;
+343.                $this->_errmsg = "parameters " . join(', ', $missed_keys) . " can no be empty";
+344.                return false;
+345.        }
+346. 
+347.        if($this->_count > self::mail_limitsize) {
+348.            $this->_errno = SAE_ErrForbidden;
+349.            $this->_errmsg = "mail size cannot larger than ".self::mail_limitsize." bytes";
+350.            return false;
+351.        }
+352.        //print_r($this->_post);
+353.        if ( isset($this->_post['charset']) ) {
+354.            $charset = strtolower($this->_post['charset']);
+355.            $content_conved = @iconv($charset, 'utf-8', $this->_post['content']);
+356.            if ($content_conved)
+357.                $this->_post['content'] = $content_conved;
+358.            $subject_conved = @iconv($charset, 'utf-8', $this->_post['subject']);
+359.            if ($subject_conved)
+360.                $this->_post['subject'] = $subject_conved;
+361.            $this->_post['charset'] = 'utf-8';
+362.        }
+363.        $tobepost = json_encode($this->_post);
+364.        return $this->postData(array("saemail"=>$tobepost));
+365.    }
+366. 
+367. 
+368.    private function postData($post) {
+369.        $url = self::baseurl;
+370.        $s = curl_init();
+371.        curl_setopt($s,CURLOPT_URL,$url);
+372.        curl_setopt($s,CURLOPT_HTTP_VERSION,CURL_HTTP_VERSION_1_0);
+373.        curl_setopt($s,CURLOPT_TIMEOUT,5);
+374.        curl_setopt($s,CURLOPT_RETURNTRANSFER,true);
+375.        curl_setopt($s,CURLOPT_HEADER, 1);
+376.        curl_setopt($s,CURLINFO_HEADER_OUT, true);
+377.        curl_setopt($s,CURLOPT_HTTPHEADER, $this->genReqestHeader($post));
+378.        curl_setopt($s,CURLOPT_POST,true);
+379.        curl_setopt($s,CURLOPT_POSTFIELDS,$post); 
+380.        $ret = curl_exec($s);
+381.        // exception handle, if error happens, set errno/errmsg, and return false
+382.        $info = curl_getinfo($s);
+383.        //print_r($info);
+384.        //echo 'abab';
+385.        //print_r($ret);
+386.        //echo 'abab';
+387.        if(empty($info['http_code'])) {
+388.            $this->_errno = SAE_ErrInternal;
+389.            $this->_errmsg = "mail service segment fault";
+390.            return false;
+391.        } else if($info['http_code'] != 200) {
+392.            $this->_errno = SAE_ErrInternal;
+393.            $this->_errmsg = "mail service internal error";
+394.            return false;
+395.        } else {
+396.            if($info['size_download'] == 0) { // get MailError header
+397.                $header = substr($ret, 0, $info['header_size']);
+398.                $mailheader = $this->extractCustomHeader("MailError", $header);
+399.                if($mailheader == false) { // not found MailError header
+400.                    $this->_errno = SAE_ErrUnknown;
+401.                    $this->_errmsg = "unknown error";
+402.                    return false;
+403.                }
+404.                $err = explode(",", $mailheader, 2);
+405.                $this->_errno = $err[0];
+406.                $this->_errmsg = $err[1];
+407.                return false;
+408.            } else {
+409.                $body = substr($ret, -$info['size_download']);
+410.                $body = json_decode(trim($body), true);
+411.                $this->_errno = $body['errno'];
+412.                $this->_errmsg = $body['errmsg'];
+413.                if ($body['errno'] != 0) {
+414.                    return false;
+415.                }
+416.            }
+417.        }
+418.        return true;
+419.    }
+420. 
+421.    private function genSignature($content, $secretkey) {
+422.        $sig = base64_encode(hash_hmac('sha256',$content,$secretkey,true));
+423.        return $sig;
+424.    }
+425. 
+426.    private function genReqestHeader($post) {
+427.        $timestamp = date('Y-m-d H:i:s');
+428.        $cont1 = "ACCESSKEY".$this->_accesskey."TIMESTAMP".$timestamp;
+429.        $reqhead = array("TimeStamp: $timestamp","AccessKey: ".$this->_accesskey, "Signature: " . $this->genSignature($cont1, $this->_secretkey));
+430.        //print_r($reqhead);
+431.        return $reqhead;
+432.    }
+433. 
+434.    private function extractCustomHeader($key, $header) {
+435.        $pattern = '/'.$key.'(.*?)'."\n/";
+436.        if (preg_match($pattern, $header, $result)) {
+437.            return $result[1];
+438.        } else {
+439.            return false;
+440.        }
+441.    }
+442. 
+443.}
+Documentation generated on Mon, 27 May 2013 10:21:07 +0800 by phpDocumentor 1.4.3 

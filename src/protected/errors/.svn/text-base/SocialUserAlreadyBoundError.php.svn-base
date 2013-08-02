@@ -1,0 +1,1 @@
+<?php class SocialUserAlreadyBoundError extends Error {}

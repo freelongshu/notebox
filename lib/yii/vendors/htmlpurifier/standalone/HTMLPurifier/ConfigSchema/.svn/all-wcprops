@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/notebox/!svn/ver/2/1/lib/yii/vendors/htmlpurifier/standalone/HTMLPurifier/ConfigSchema
+END
+Exception.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/notebox/!svn/ver/2/1/lib/yii/vendors/htmlpurifier/standalone/HTMLPurifier/ConfigSchema/Exception.php
+END
+InterchangeBuilder.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/notebox/!svn/ver/2/1/lib/yii/vendors/htmlpurifier/standalone/HTMLPurifier/ConfigSchema/InterchangeBuilder.php
+END
+schema.ser
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/notebox/!svn/ver/2/1/lib/yii/vendors/htmlpurifier/standalone/HTMLPurifier/ConfigSchema/schema.ser
+END
+Validator.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/notebox/!svn/ver/2/1/lib/yii/vendors/htmlpurifier/standalone/HTMLPurifier/ConfigSchema/Validator.php
+END
+ValidatorAtom.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/notebox/!svn/ver/2/1/lib/yii/vendors/htmlpurifier/standalone/HTMLPurifier/ConfigSchema/ValidatorAtom.php
+END
+Interchange.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/notebox/!svn/ver/2/1/lib/yii/vendors/htmlpurifier/standalone/HTMLPurifier/ConfigSchema/Interchange.php
+END

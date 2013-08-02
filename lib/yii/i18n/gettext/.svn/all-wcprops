@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/notebox/!svn/ver/2/1/lib/yii/i18n/gettext
+END
+CGettextMoFile.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/notebox/!svn/ver/2/1/lib/yii/i18n/gettext/CGettextMoFile.php
+END
+CGettextPoFile.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/notebox/!svn/ver/2/1/lib/yii/i18n/gettext/CGettextPoFile.php
+END
+CGettextFile.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/notebox/!svn/ver/2/1/lib/yii/i18n/gettext/CGettextFile.php
+END

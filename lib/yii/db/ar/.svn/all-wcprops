@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/notebox/!svn/ver/2/1/lib/yii/db/ar
+END
+CActiveRecord.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/notebox/!svn/ver/2/1/lib/yii/db/ar/CActiveRecord.php
+END
+CActiveRecordBehavior.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/notebox/!svn/ver/2/1/lib/yii/db/ar/CActiveRecordBehavior.php
+END
+CActiveFinder.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/notebox/!svn/ver/2/1/lib/yii/db/ar/CActiveFinder.php
+END

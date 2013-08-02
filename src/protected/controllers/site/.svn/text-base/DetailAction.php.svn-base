@@ -1,0 +1,10 @@
+<?php
+
+class DetailAction extends PageAction
+{
+	
+	public function runPage(){
+		return array(
+		);
+	}
+}

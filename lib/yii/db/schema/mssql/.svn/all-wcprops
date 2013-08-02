@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mssql
+END
+CMssqlTableSchema.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mssql/CMssqlTableSchema.php
+END
+CMssqlColumnSchema.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mssql/CMssqlColumnSchema.php
+END
+CMssqlSqlsrvPdoAdapter.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mssql/CMssqlSqlsrvPdoAdapter.php
+END
+CMssqlSchema.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mssql/CMssqlSchema.php
+END
+CMssqlPdoAdapter.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mssql/CMssqlPdoAdapter.php
+END
+CMssqlCommandBuilder.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mssql/CMssqlCommandBuilder.php
+END

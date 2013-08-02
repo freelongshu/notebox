@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/notebox/!svn/ver/2/1/lib/yii/test
+END
+CDbFixtureManager.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/notebox/!svn/ver/2/1/lib/yii/test/CDbFixtureManager.php
+END
+CWebTestCase.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/notebox/!svn/ver/2/1/lib/yii/test/CWebTestCase.php
+END
+CTestCase.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/notebox/!svn/ver/2/1/lib/yii/test/CTestCase.php
+END
+CDbTestCase.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/notebox/!svn/ver/2/1/lib/yii/test/CDbTestCase.php
+END

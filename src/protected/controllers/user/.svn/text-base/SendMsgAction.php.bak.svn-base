@@ -1,0 +1,46 @@
+<?php
+
+class IndexAction extends PageAction
+{	
+	public function runPage(){
+		$organizationId=$_GET['organizationId'];
+		Yii::app()->session['organizationId']=$organizationId;
+		$currentAccount=array();
+		if((!Yii::app()->user->isGuest)&&(Yii::app()->session['userType']==='customer')){
+			$organization=$this->repo('organization')->getOrganization($organizationId);		
+			$customer=$this->repo('user')->getUser(Yii::app()->user->id);
+			$customer['id']=Yii::app()->user->id;
+			$customer['name']=Yii::app()->user->name;
+			$customer['userType']='customer';
+			$currentAccount=$this->repo('account')->getCurrentAccount(Yii::app()->user->id,$organizationId);
+		}else{
+			Yii::app()->user->logout();
+			Yii::app()->session['userType']='guest';
+			$customer=array();
+			$customer['userType']='guest';
+			$customer['name']='';
+		}
+        
+		include_once( 'config.php' );
+		include_once( 'saetv2.ex.class.php' );	
+		$o = new SaeTOAuthV2( WB_AKEY , WB_SKEY );
+		$code_url=$o->getAuthorizeURL( WB_CALLBACK_URL ).'&state='.$organizationId;
+		$recentActivities=$this->repo('activity')->recentActivities($organizationId);
+		$recentPrivileges=$this->repo('privilege')->recentPrivileges($organizationId);
+		$recentPromotions=$this->repo('promotion')->recentPromotions($organizationId);
+		$organization=$this->repo('organization')->getOrganization($organizationId);
+		
+		return array(
+			'title'=>$organization['organization_name'],
+			'sub_title'=>'增值服务首页',
+			'organization'=>$organization,
+			'recentActivities'=>$recentActivities,
+			'recentPrivileges'=>$recentPrivileges,
+			'recentPromotions'=>$recentPromotions,
+			'customer'=>$customer,
+			'currentAccount'=>$currentAccount,
+			'code_url'=>$code_url,
+			'code_url_forcelogin'=>$code_url.'&forcelogin=true',
+		);
+	}
+}

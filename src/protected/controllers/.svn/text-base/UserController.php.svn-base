@@ -1,0 +1,18 @@
+<?php
+
+class UserController extends Controller
+{
+    public function actions()
+    {
+		/*注意controllers不能少掉s*/
+        return array(
+			'index'=>'application.controllers.user.IndexAction',
+			'login'=>'application.controllers.user.LoginAction',
+            'boxes'=>'application.controllers.user.BoxesAction',
+			'logout'=>'application.controllers.user.LogoutAction',
+            'signUp'=>'application.controllers.user.SignUpAction',
+            'verifyEmail'=>'application.controllers.user.VerifyEmailAction',
+            'sendVerifyEmail'=>'application.controllers.user.SendVerifyEmailAction',
+        );
+    }
+}

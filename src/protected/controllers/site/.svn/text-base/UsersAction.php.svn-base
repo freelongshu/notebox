@@ -1,0 +1,10 @@
+<?php
+
+class UsersAction extends PageAction
+{
+	
+	public function runPage(){
+		return array(
+		);
+	}
+}

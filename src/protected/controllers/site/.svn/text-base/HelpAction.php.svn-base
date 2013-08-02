@@ -1,0 +1,10 @@
+<?php
+
+class HelpAction extends PageAction
+{
+	
+	public function runPage(){
+		return array(
+		);
+	}
+}

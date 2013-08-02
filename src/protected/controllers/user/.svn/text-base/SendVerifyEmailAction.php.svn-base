@@ -1,0 +1,24 @@
+<?php
+class SendVerifyEmailAction extends AjaxAction{
+	public function runAjax(){
+        $to=$_POST['email'];
+        $user=$this->repo('user')->getUserByEmail($to);
+		$res=$this->repo('user')->sendEmail(
+			$to, '笔记盒注册用户邮箱验证' , 
+			"您好！<br>
+            欢迎注册<a href='http://notebox.sinaapp.com'>笔记盒</a>!点击以下链接完成邮箱验证：
+			<a href='http://notebox.sinaapp.com/user/verifyEmail/".$user['emailVerifyCode']."'>
+			http://notebox.sinaapp.com/user/verifyEmail/".$user['emailVerifyCode']."</a><br>
+            --<br>
+            笔记盒<br>
+            notebox.sinaapp.com", 
+			'notebox@sina.cn','notebox2013'
+		);
+		if($res==true){
+			return array('sendStatus'=>'success');	
+		}else{
+			return array('sendStatus'=>'fail');
+		}
+	}
+}
+?>

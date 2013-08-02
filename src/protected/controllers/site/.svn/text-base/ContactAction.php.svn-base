@@ -1,0 +1,10 @@
+<?php
+
+class ContactAction extends PageAction
+{
+	
+	public function runPage(){
+		return array(
+		);
+	}
+}

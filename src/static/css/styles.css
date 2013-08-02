@@ -1,0 +1,657 @@
+body{
+    font-size:14px;
+	color:#666;
+	background-color:#cddce7;		
+}
+a:hover,a:focus{
+	text-decoration:none;
+    color:#f7ad32;
+}
+.radius {
+	border: 1px solid #cccccc;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+.center{
+	text-align:center;
+}
+.right{
+	text-align:right;
+}
+.col{
+	float:left;
+}
+.float_right{
+	float:right;
+}
+.clear{
+	clear:both;
+}
+.hide{
+	display:none;
+}
+.button{
+	width:120px;
+	height:30px;
+    padding:5px 0;
+	background-color:#3377aa;
+	border:none;
+	color:#fff;
+	text-align:center;
+    border: 1px solid #cccccc;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+.button:hover{
+	background-color:#2c658f;
+	cursor:pointer;
+}
+.dashedBorder{
+	width:100%;
+	height:1px;
+	border-top:2px dashed #ccc;
+}
+.divideLine{
+	clear:both;
+	background-color:#999;
+	height:1px;
+	width:100%;
+}
+.dottedLine{
+	clear:both;
+	background:url(../img/dotted_line.png);
+	height:1px;
+	width:100%;
+	margin:10px 0 10px 0;
+}
+.header{
+    margin-top:20px;
+	height:80px;
+}
+.logo{
+    float:left;
+	float:left;
+    width:200px;
+}
+.logoImg{
+	float:left;
+}
+.logoText{
+    float:left;
+    margin:10px 0 0 10px;
+	font-size:25px;
+    color:#000;
+}
+.topUl{
+    float:left;
+    margin-left:40px;
+    width:700px;
+	list-style:none;
+}
+.topUl li{
+    border: 1px solid #cccccc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width:60px;
+    height:20px;
+    margin-left:10px;
+    padding:5px;
+    vertical-align:center;
+    text-align:center;
+    float:right;
+    background-color: #a5d16d;
+    color:#fff;
+}
+.topUl li:hover{
+    color:#fff;
+    font-size:16px;
+	background-color:#7798c8;
+}
+.middle{
+	min-height:450px;
+	margin-top:10px;	
+}
+.middle .leftCol{
+	float:left;
+    width:700px;
+    margin-right:20px;
+}
+.middle .rightCol{
+	float:left;
+    width:220px;
+}
+.userForm .inputLabel{
+	float:left;
+    width:70px;
+    text-align:right;
+}
+.userForm .input{
+	float:left;
+    width:220px;
+}
+.userForm .inputError{
+	float:left;
+    color:#da1111;
+    margin-left:5px;
+}
+.userForm .button{
+    float:left;
+	margin-left:70px;
+    width:100px;
+}
+.userForm .checkBox{
+	float:left;
+    margin-left:70px;
+}
+.userForm .loginTip{
+    float:left;
+    margin:5px 0 0 10px;
+}
+.haveSentTip{
+	color:#999;
+}
+.avatarInfo{
+	background-color:#72cf98;
+    height:150px;
+    padding:10px 0;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    border-top-left-radius: 10px;
+}
+.nickname{
+	text-align:center;
+    color:#fff;
+    font-size:16px;
+}
+.avatar{
+	width:80px;
+    height:80px;
+    margin:20px auto;
+}
+.avatarImg{
+	width:80px;
+    height:80px;
+}
+.noteInfo{
+    padding-top:10px;
+	background-color:#fff;
+    height:50px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-left-radius: 10px;
+}
+.noteInfoCol{
+	float:left;
+    width:110px;
+    text-align:center;
+}
+.userInfoUpdate{
+    width:180px;
+    height:20px;
+    text-align: center;
+    background-color: #eee;
+    margin-left: 20px;
+    padding-top: 5px;
+}
+.updateUserForm{
+    background-color: #72cf98;
+    padding: 10px;
+    margin-bottom: 5px;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+}
+.updateUserForm .changeAvatar{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.updateUserForm input{
+    margin-bottom: 5px;
+    width:185px;
+}
+.updateUserForm .radioButton{
+    opacity: 0;
+    width: 0;
+    height:0px;
+}
+.updateUserForm .button{
+    width:200px;
+    clear:both;
+    background-color: #fff;
+    color:#999;
+    margin-bottom: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.updateUserForm .current{
+    background-color: #ffcd8e;
+}
+#saveUpdateUser,#cancelUpdateUser{
+    margin-top: 10px;
+}
+.blockTitle{
+    background-color:#fff;
+    width:700px;
+    height:30px;
+    padding-top:10px;
+    font-size:16px;
+    font-weight:3px;
+    text-align:center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-bottom:10px;
+}
+.noteItem{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+	width:660px;
+    float:left;
+    padding:20px;
+    background-color:#fff;
+    margin-bottom:10px;
+}
+.noteItem .boxInfo{
+    color:#666;
+    font-size:12px;
+}
+.noteItem .boxInfo a{
+    font-size:12px;
+}
+.noteItem .title{
+	width:100%;
+    float:left;
+}
+.noteItem .content{
+	width:100%;
+    min-height:240px;
+    float:left;
+    font-size:16px;
+    font-weight:2px;
+}
+.noteItem .operations{
+    float:left;
+}
+.noteItem .fromInfo{
+    float:right;
+    font-size:12px;
+}
+.noteItem .operations .operationItem{
+    float:left;
+    width:40px;
+    margin-right: 10px;
+}
+.noteItem .operations .operationItem a,.noteItem .fromInfo a{
+    font-size:12px;
+}
+.collectTip{
+    width:500px;
+    height:35px;
+    font-size:20px;
+    font-weight:3px;
+    background-color:#72cf98;
+    color:#fff;
+    margin-bottom:5px;
+    margin-left:120px;
+    padding-top:15px;
+}
+.noteForm .line{
+	margin-bottom:5px;
+}
+.noteForm .inputLabel{
+    color:#fff;
+	float:left;
+    width:120px;
+    height:50px;
+    background-color:#d5d5d5;
+    padding-top:30px;
+    text-align:center;
+}
+.noteForm .input{
+	float:left;
+    width:500px;
+    height:80px;
+	background-color:#72cf98;
+}
+.noteForm input{
+	border:none;
+    height:60px;
+    width:480px;
+    background-color:#72cf98;
+    font-size:16px;
+    font-weight:2px;
+}
+.noteForm .boxNameInput{
+	width:400px;
+    float:left;
+    color:#fff;
+    font-size:25px;
+    font-weight:5px;
+}
+.noteForm #NoteForm_title{
+    color:#fff;
+    font-size:25px;
+    font-weight:5px;
+}
+.noteForm .boxIdSelect{
+    color:#fff;
+	width:80px;
+    height:20px;
+    float:left;
+    text-align:center;
+    padding-top:30px;
+    background-color:#72cf98;
+}
+.noteForm #changeBox:hover{
+	cursor:pointer;
+    color:#d5778c;
+}
+.noteForm .contentInput{
+	height:410px;
+    width:500px;
+    float:left;
+}
+.noteForm textarea{
+	border:none;
+    height:400px;
+    width:488px;
+    background-color:#72cf98;
+    font-size:19px;
+    font-weight:2px;
+}
+.noteForm .isPublicLabel{
+    padding-top:15px;
+	width:120px;
+    height:35px;
+    text-align:center;
+    color:#fff;
+    text-align:center;
+    float:left;
+    background-color:#d5d5d5;
+}
+.noteForm .checkBox{
+	width:20px;
+    height:20px;
+    float:left;
+}
+.noteForm .button{
+	width:500px;
+    height:50px;
+    background-color:#72cf98;
+    color:#fff;
+    text-align:center;
+}
+.noteForm .boxIdHide{
+	position:absolute;
+    background-color:#fff;
+    width:300px;
+    height:auto;
+}
+.boxForm .inputLabel{
+	color:#fff;
+	float:left;
+    width:120px;
+    height:50px;
+    background-color:#d5d5d5;
+    padding-top:30px;
+    text-align:center;
+    margin-bottom:5px;
+}
+.boxForm .input{
+	float:left;
+    width:500px;
+    height:80px;
+	background-color:#72cf98;	
+}
+.boxForm .inputError{
+	float:left;
+    width:80px;
+}
+.boxForm input{
+	border:none;
+    height:60px;
+    width:480px;
+    background-color:#72cf98;
+}
+.boxForm .boldInput{
+	font-size:25px;
+	font-weight:10px;    
+}
+.boxForm .contentInput{
+	height:210px;
+    width:500px;
+    float:left;
+}
+.boxForm textarea{
+	border:none;
+    height:200px;
+    width:488px;
+    background-color:#72cf98;
+}
+.boxForm .checkBox{
+	margin-left:240px;
+}
+.boxForm .button{
+	width:500px;
+    height:50px;
+    background-color:#72cf98;
+    color:#fff;
+    margin-left:120px;
+    text-align:center;
+}
+.boxItem{
+	width:310px;
+    margin:0 20px 20px 0;
+    float:left;
+}
+.boxItem .itemHead{
+	width:100%;
+    height:80px;
+    background-color:#fff;   
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    border-top-left-radius: 10px;    
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+    
+}
+.boxItem .itemHead .boxTime{
+	width:90px;
+    height:60px;
+    float:left;
+    text-align:center;
+    padding-top:20px;
+}
+.boxItem .itemHead .boxTime .daySpan{
+	font-size:30px;
+    font-weight:5px;
+}
+.boxItem .itemHead .boxName{
+	width:220px;
+    height:100%;
+    font-size:25px;
+    font-weight:5px;
+    text-align:center;
+    float:left;
+    padding-top:30px;
+}
+.boxItem .itemMiddle{
+	width:100%;
+    min-height:150px;
+    background-color:#78dce1;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+}
+.boxItem .itemMiddle .noteNum{
+	float:left;
+    width:100px;
+    height:100%;
+    color:#fff;
+    margin-top:20px;
+    text-align:center;
+}
+.boxItem .itemMiddle .notes{
+    width:210px;
+	float:left;
+}
+.boxItem .itemMiddle .notes .noteItem{
+	text-align:center;
+    color:#fff;
+    width:100%;
+    height:30px;
+}
+.boxItem .itemMiddle .notes .noteItem:hover{
+	background-color:#fff;
+    color:#000;
+    cursor:pointer;
+}
+.boxIdHide{
+    display:none;
+    position:absolute;
+    top:180px;
+    left:303px;
+    padding:10px 0;
+	width:460px;
+    min-height:50px;
+    background-color:#fff;
+}
+.boxIdHide .boxOption,.boxIdHide .addBox{
+	width:100%;
+    height:30px;
+    text-align:center;   
+}
+.boxIdHide .boxOption:hover,.boxIdHide .addBox:hover{
+	cursor:pointer;
+    background-color:#e3e3e3;
+}
+.boxIdHide .boxOption .boxName{
+    width:420px;
+    float:left;
+    padding-top:7px;
+}
+.boxIdHide .boxOption .deleteBox{
+    width:40px;
+    height:30px;
+    float:left;
+    background-color:#fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display:none;
+}
+.boxIdHide .smallBoxForm{
+	display:none;
+}
+.boxIdHide .smallBoxForm input{
+	float:left;
+    width:330px;
+    height:22px;
+    margin-left:20px;
+}
+.boxIdHide .smallBoxForm .createButton{
+	width:80px;
+    height:30px;
+    margin-left:10px;
+    float:left;
+}
+.boxIdHide .triangleImg{
+	position:relative;
+    top:-30px;
+    left:400px;
+}
+.boxIdHide .triangleImgb{
+    top:0px;
+    left:400px;
+    position:relative;
+}
+.top240{
+    top:240px;
+}
+.shade{
+    display:none;
+    background-color:#666666;
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:10;
+    left:0;
+    top:0;
+    overflow:hidden;
+    opacity: 0.7;/*非IE滤镜*/
+    filter:alpha(opacity=70);/*IE滤镜*/
+}
+.boxSelect{
+    z-index:20;
+    display:none;
+    position:fixed;
+    top:120px;
+    left:403px;
+    padding:10px 0;
+    width:460px;
+    min-height:250px;
+    background-color:#fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.comments{
+    margin-top:10px;
+    width:650px;
+    padding:5px;
+    background-color:#bae6f6;
+}
+.comments .arrow{
+    top:-20px;
+    left:10px;
+    position:relative;
+}
+.comments textarea{
+    width:550px;
+    float:left;
+    margin-right:5px;
+}
+.comments .button{
+    width:78px;
+    float:left;
+    color:#fff;
+    height:27px;
+    padding-top:15px;
+}
+.comment .author{
+    float:left;
+    width:80px;
+}
+.comment .content{
+    float:left;
+    width:600px;
+    height:auto;
+    min-height:60px;
+}
+.comment .reply{
+    float:left;
+}
+.footer{
+	width:350px;
+	margin:30px 0 0 350px;
+	color:#999;
+	font-size:12px;
+}

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/shell
+END
+CrudCommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/shell/CrudCommand.php
+END
+ModelCommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/shell/ModelCommand.php
+END
+ControllerCommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/shell/ControllerCommand.php
+END
+FormCommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/shell/FormCommand.php
+END
+ModuleCommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/shell/ModuleCommand.php
+END
+HelpCommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/notebox/!svn/ver/2/1/lib/yii/cli/commands/shell/HelpCommand.php
+END

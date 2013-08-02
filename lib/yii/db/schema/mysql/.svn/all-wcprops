@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mysql
+END
+CMysqlSchema.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mysql/CMysqlSchema.php
+END
+CMysqlCommandBuilder.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mysql/CMysqlCommandBuilder.php
+END
+CMysqlTableSchema.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mysql/CMysqlTableSchema.php
+END
+CMysqlColumnSchema.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/notebox/!svn/ver/2/1/lib/yii/db/schema/mysql/CMysqlColumnSchema.php
+END

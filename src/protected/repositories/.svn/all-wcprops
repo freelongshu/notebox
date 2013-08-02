@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/notebox/!svn/ver/730/1/src/protected/repositories
+END
+NoteRepository.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/notebox/!svn/ver/511/1/src/protected/repositories/NoteRepository.php
+END
+UserRepository.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/notebox/!svn/ver/380/1/src/protected/repositories/UserRepository.php
+END
+BoxRepository.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/notebox/!svn/ver/730/1/src/protected/repositories/BoxRepository.php
+END

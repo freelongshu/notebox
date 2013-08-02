@@ -1,0 +1,16 @@
+uglifyjs editor.js \
+core/browser.js \
+core/utils.js \
+core/EventBase.js \
+core/filterword.js \
+core/dom/dtd.js \
+core/dom/domUtils.js \
+core/dom/Range.js \
+core/dom/Selection.js \
+plugins/serialize.js \
+plugins/undo.js \
+plugins/inserthtml.js \
+plugins/paste.js \
+custom/cleanformat.js \
+core/Editor.js \
+-o ../assets/minieditor.js -b

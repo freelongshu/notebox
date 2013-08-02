@@ -1,0 +1,43 @@
+<?php
+
+abstract class PageAction extends Action
+{
+    protected $view;
+    
+    abstract public function runPage();
+
+    public function run()
+    {
+        $this->view = $this->id;
+        try {
+            $data = $this->runPage();
+            if ($data == null) {
+                $data = array();
+            }
+			if(Yii::app()->user->isGuest){
+				$data['user']['isGuest']=true;
+			}else{
+				$data['user']['isGuest']=false;
+				$data['user']['id']=Yii::app()->user->id;
+				$data['user']['name']=Yii::app()->user->name;
+
+			}
+			$data['static']=Yii::app()->request->baseUrl.'/static';
+            //$data['domain']=Yii::app()->params()->domain;
+            $this->controller->render($this->view, $data);
+        }
+        catch (UserLoginRequiredError $error) {
+            Yii::app()->user->loginRequired();
+        }
+        catch (UserNotInitializedError $error) {
+            $this->controller->redirect(array('account/finish-register'));
+        }
+        Yii::getLogger()->info('application.viewpage');
+    }
+
+    public function redirect($url, $terminate = true, $statusCode = 302)
+    {
+        return $this->controller->redirect($url, $terminate, $statusCode);
+    }
+
+}

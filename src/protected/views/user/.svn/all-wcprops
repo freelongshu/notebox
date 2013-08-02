@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/notebox/!svn/ver/722/1/src/protected/views/user
+END
+signUp.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/notebox/!svn/ver/555/1/src/protected/views/user/signUp.tpl
+END
+index.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/notebox/!svn/ver/453/1/src/protected/views/user/index.tpl
+END
+login.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/notebox/!svn/ver/556/1/src/protected/views/user/login.tpl
+END
+verifyEmail.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/notebox/!svn/ver/358/1/src/protected/views/user/verifyEmail.tpl
+END
+boxes.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/notebox/!svn/ver/722/1/src/protected/views/user/boxes.tpl
+END

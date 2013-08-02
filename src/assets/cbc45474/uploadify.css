@@ -1,0 +1,93 @@
+/*
+Uploadify
+Copyright (c) 2012 Reactive Apps, Ronnie Garcia
+Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
+*/
+dl.upload {
+	height:auto;
+	width: 50%;
+}
+
+.uploadify {
+	position: relative;
+}
+.uploadify-button {
+	background: url(img/bg_29.png);
+	width: 100%;
+	-webkit-border-radius: 0.35em;
+	-moz-border-radius: 0.35em;
+	border-radius: 0.35em;
+	-webkit-box-shadow: inset 0 -1px 0.35em #AAA;
+	-moz-box-shadow: inset 0 -1px 0.35em #aaa;
+	box-shadow: inset 0 -1px 0.35em #AAA;
+}
+.uploadify-button span {
+	margin-left:10px;
+	margin-top:4px;
+	z-index: 5;
+	padding: 3px 10px 0 10px;
+	background: #7E859D;
+	color: white;
+	font-weight: bold;
+	font-style: italic;
+	height: 1.4em;
+	line-height: 1.4em;
+	-webkit-border-radius: 0.35em;
+	-moz-border-radius: 0.35em;
+	border-radius: 0.35em;
+	filter: Alpha(opacity=80);
+	opacity: 0.8;
+}
+
+.uploadify-button.disabled {
+	background-color: #D0D0D0;
+	color: #808080;
+}
+
+.uploadify-queue-item {
+	font: 11px Verdana, Geneva, sans-serif;
+	margin-top: 5px;
+	max-width: 350px;
+	padding: 10px;
+}
+.uploadify-error {
+	background-color: #FDE5DD !important;
+}
+.uploadify-queue-item .cancel a {
+	background: url('img/uploadify-cancel.png') 0 0 no-repeat;
+	float: right;
+	height:	16px;
+	text-indent: -9999px;
+	width: 16px;
+}
+.uploadify-queue-item.completed {
+	background-color: #E5E5E5;
+}
+.uploadify-progress {
+	overflow:hidden;
+	border: 1px solid #C3D659;
+	background: #F0F0F0;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#F0F0F0), to(#FCFCFC));
+	background: -moz-linear-gradient(#F0F0F0, #FCFCFC);
+	background: -o-linear-gradient(#F0F0F0, #FCFCFC);
+	background: linear-gradient(#F0F0F0, #FCFCFC);
+	margin-top: 10px;
+	width: 100%;
+	height: 6px;
+	-webkit-border-radius: 0.35em;
+-moz-border-radius: 0.35em;
+border-radius: 0.35em;
+-webkit-box-shadow: 0 1px 0.21em #CCC;
+-moz-box-shadow: 0 1px 0.21em #ccc;
+box-shadow: 0 1px 0.21em #CCC;
+}
+.uploadify-progress-bar {
+	width:1px;
+	height: 6px;
+	border:1px solid #c3d659; 
+	background:#c3d659;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#c3d659), to(#c6ce81));
+	background:-moz-linear-gradient(#c3d659, #c6ce81);
+	background:-o-linear-gradient(#c3d659, #c6ce81);
+	background:linear-gradient(#c3d659, #c6ce81);
+}
